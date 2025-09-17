@@ -9,6 +9,7 @@ import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
 import Hobbies from "./components/Hobbies";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
@@ -23,8 +24,9 @@ const App: React.FC = () => {
         <Projects />
         <Certifications />
         <Hobbies />
-        <Contact/>
+        <Contact />
       </main>
+      <Footer />
     </div>
   );
 };
