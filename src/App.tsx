@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
+import Hobbies from "./components/Hobbies";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <Services />
         <Projects />
         <Certifications />
+        <Hobbies />
       </main>
     </div>
   );

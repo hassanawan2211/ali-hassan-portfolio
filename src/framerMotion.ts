@@ -1,6 +1,6 @@
-export const motionEffect = (direction = "left") => {
-  let initialX = 0,
-    initialY = 0;
+export const motionEffect = (direction: "left" | "right" | "top" | "bottom" = "left") => {
+  let initialX = 0;
+  let initialY = 0;
 
   switch (direction) {
     case "left":
@@ -15,8 +15,6 @@ export const motionEffect = (direction = "left") => {
     case "bottom":
       initialY = 100;
       break;
-    default:
-      initialX = -100;
   }
 
   return {
@@ -24,14 +22,16 @@ export const motionEffect = (direction = "left") => {
     whileInView: { opacity: 1, x: 0, y: 0 },
     transition: {
       delay: 0.2,
-      x: { type: "spring", stiffness: 60, damping: 15 },
-      y: { type: "spring", stiffness: 60, damping: 15 },
-      opacity: { duration: 1 },
+      type: "spring",
+      stiffness: 60,
+      damping: 15,
+      duration: 0.8,
       ease: "easeInOut",
-      duration: 1,
     },
+    viewport: { once: true },
   };
 };
+
 
 export const listContainer = () => {
   return {
@@ -43,19 +43,17 @@ export const listContainer = () => {
         transition: {
           delayChildren: 0.4,
           staggerChildren: 0.2,
-          duration: 0.2,
           ease: "easeInOut",
         },
       },
     },
-
     item: {
       hidden: { y: 20, opacity: 0 },
       visible: {
         y: 0,
         opacity: 1,
-        duration: 0.1,
         transition: {
+          duration: 0.4,
           ease: "easeInOut",
         },
       },
