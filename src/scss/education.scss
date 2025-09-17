@@ -1,0 +1,177 @@
+// colors
+$mainColor: #243642;
+$primaryColor: #219b9d;
+$secondaryColor: #e2f1e7;
+$lightWhite: #f8fafc;
+$pureWhite: #fff;
+
+$lg-screen: 1200px;
+$laptop: 992px;
+$tablet: 768px;
+$mobile: 550px;
+
+.card5 {
+  width: 300px;
+  height: 200px;
+  background: #243137;
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+
+  .border {
+    position: absolute;
+    inset: 0px;
+    border: 2px solid $primaryColor;
+    opacity: 0;
+    transform: rotate(10deg);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .bottom-text {
+    position: absolute;
+    left: 50%;
+    bottom: 13px;
+    transform: translateX(-50%);
+    font-size: 6px;
+    text-transform: uppercase;
+    padding: 0px 5px;
+    color: $primaryColor;
+    background: #243137;
+
+    opacity: 0;
+    letter-spacing: 7px;
+
+    transition: all 0.5s ease-in-out;
+  }
+
+  .content {
+    transition: all 0.5s ease-in-out;
+
+    .logo {
+      height: 34px;
+      position: relative;
+      width: 33px;
+      overflow: hidden;
+      transition: all 1s ease-in-out;
+      padding: 0;
+
+      #logo-main,
+      #logo-second {
+        height: 100%;
+      }
+
+      #logo-main {
+        fill: $primaryColor;
+      }
+
+      #logo-second {
+        padding-bottom: 10px;
+        fill: none;
+        stroke: $primaryColor;
+        stroke-width: 1px;
+      }
+
+      .logo1 {
+        height: 33px;
+        position: absolute;
+        left: 0;
+      }
+      .logo2 {
+        height: 33px;
+        position: absolute;
+        left: 33px;
+      }
+
+      .trail {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+      }
+    }
+
+    .logo-bottom-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 30px;
+      color: $primaryColor;
+      padding-left: 8px;
+      font-size: 11px;
+      opacity: 0;
+      letter-spacing: none;
+      transition: all 0.5s ease-in-out 0.5s;
+    }
+  }
+
+  &:hover {
+    border-radius: 0;
+    transform: scale(1.1);
+
+    .logo {
+      width: 134px;
+      animation: opacity 1s ease-in-out;
+    }
+    .border {
+      inset: 15px;
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    .bottom-text {
+      letter-spacing: 3px;
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+
+    .content {
+      .logo-bottom-text {
+        opacity: 1;
+        letter-spacing: 9.5px;
+      }
+    }
+
+    .trail {
+      animation: trail 1s ease-in-out;
+    }
+  }
+}
+@keyframes trail {
+  0% {
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 90%,
+      rgba(33, 155, 157, 1) 100%
+    );
+    opacity: 0;
+  }
+  30% {
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 70%,
+      rgba(33, 155, 157, 1) 100%
+    );
+    opacity: 1;
+  }
+  70% {
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 70%,
+      rgba(33, 155, 157, 1) 100%
+    );
+    opacity: 1;
+  }
+  95% {
+    background: linear-gradient(
+      90deg,
+      rgba(189, 159, 103, 0) 90%,
+      rgba(33, 155, 157, 1) 100%
+    );
+    opacity: 0;
+  }
+}
