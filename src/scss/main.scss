@@ -1,0 +1,236 @@
+// colors
+$mainColor: #243642;
+$primaryColor: #219b9d;
+$secondaryColor: #e2f1e7;
+$lightWhite: #f8fafc;
+$pureWhite: #fff;
+
+$lg-screen: 1200px;
+$laptop: 992px;
+$tablet: 768px;
+$mobile: 550px;
+@use "sass:color";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url(nav.scss);
+// @import url(hero-banner.scss);
+@import url(projects.scss);
+@import url(education.scss);
+@import url(services.scss);
+@import url(testimonials.scss);
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: $mainColor !important;
+}
+
+.customButton {
+  height: 40px !important;
+  line-height: 35px;
+  padding: 0;
+  border: 0;
+  color: $lightWhite;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: inset 2px 2px 2px 0px
+      color.mix(#333, rgba(255, 255, 255, 0.3), 15%),
+    inset -2px -2px 2px 0 rgba(0, 0, 0, 0.7);
+  &:hover,
+  &:active,
+  &:focus-visible {
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.navListLinks {
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 100%;
+    bottom: -9px;
+    left: 0;
+    background: $primaryColor;
+    scale: 0;
+    transition: all 0.3s ease-in-out;
+    transform-origin: left;
+  }
+  &:hover::before,
+  &:active::before,
+  &:focus::before,
+  &:focus-visible::before {
+    scale: 1;
+  }
+  &.active::before {
+    scale: 1;
+  }
+}
+
+.heroContainer {
+  position: relative;
+  height: 100%;
+  height: calc(100vh - 60px);
+  height: 100vh;
+  background-color: #010101;
+  z-index: 9;
+  overflow: hidden;
+  @media screen and (max-width: $mobile) {
+    height: auto;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-image: url("../assets/alihassan.jpg");
+    height: 100%;
+    width: 60%;
+    top: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    opacity: 0.9;
+    z-index: 0;
+    @media screen and (max-width: $mobile) {
+      width: 80%;
+      background-position-x: bottom;
+    }
+  }
+}
+
+.mainHeading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: $mainColor;
+  font-weight: normal;
+  text-align: center;
+}
+
+.introduction_section {
+  position: relative;
+  z-index: 2;
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(../assets/bgwave.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.2;
+  }
+}
+
+// slick slider dots custom style
+.slick-dots li button:before {
+  font-size: 14px !important;
+  color: $pureWhite !important;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
+
+:root {
+  --clr-card: #686c74;
+  --clr-1: #c7cce9;
+  --clr-2: #cf98b4;
+  --clr-3: #363436;
+}
+
+.animatedCards {
+  position: relative;
+  border-radius: 0.45rem;
+  background: $mainColor;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -0.11rem;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--clr-card),
+      var(--clr-1),
+      var(--clr-2),
+      var(--clr-3),
+      var(--clr-2),
+      var(--clr-1),
+      var(--clr-card)
+    );
+    border-radius: inherit;
+    animation: rotate 4s linear infinite;
+  }
+
+  &::after {
+    box-shadow: rgba(99, 98, 98, 0.25) 0px 14px 28px,
+      rgba(138, 136, 136, 0.22) 0px 10px 10px;
+  }
+  @keyframes rotate {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+}
+
+.skillSlider {
+  position: relative;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 2px 0px
+        color.mix(#333, rgba(255, 255, 255, 0.3), 15%),
+      inset -2px -2px 2px 0 rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+}
+
+.skillList {
+  position: relative;
+  height: 40px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    border-radius: 50px;
+    box-shadow: inset 2px 2px 2px 0px
+        color.mix(#333, rgba(255, 255, 255, 0.3), 15%),
+      inset -2px -2px 2px 0 rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+}
+
+.shadow {
+  box-shadow: inset 2px 2px 2px 0px
+      color.mix(#333, rgba(255, 255, 255, 0.3), 15%),
+    inset -2px -2px 2px 0 rgba(0, 0, 0, 0.7);
+}
