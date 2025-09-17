@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HeroBanner from "./components/HeroBanner";
 import Introduction from "./components/Introduction";
 import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <HeroBanner />
         <Introduction />
         <Experience />
+        <Skills />
       </main>
     </div>
   );
