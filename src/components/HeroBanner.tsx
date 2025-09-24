@@ -1,4 +1,4 @@
-import resume from "../assets/Ali_Hassan_Software_Eng.pdf";
+import resume from "../assets/Ali_Hassan_software_Engineer.pdf";
 
 function HeroBanner() {
   return (
