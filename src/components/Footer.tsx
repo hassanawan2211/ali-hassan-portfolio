@@ -6,12 +6,12 @@ const Footer: React.FC = () => {
     {
       label: "LinkedIn",
       icon: "linkedin",
-      link: "https://www.linkedin.com/",
+      link: "https://www.linkedin.com/in/ali-hassan487/",
     },
     {
       label: "GitHub",
       icon: "git",
-      link: "https://www.github.com",
+      link: "https://github.com/hassanawan2211",
     },
   ];
 
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           <div className="col-span-12 md:col-span-5">
             <div className="text-2xl font-bold text-lightWhite italic">
               <a className="tracking-wider" href="#home">
-                MyPortfolio
+                Ali Hassan
               </a>
             </div>
             <p className="mt-4 text-gray-400 text-md">
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
         <hr className="border-gray-400 mt-6" />
         <div className="mt-8 text-center pb-6">
           <p className="text-gray-400 text-sm">
-            &copy; 2024 Ali Hassan. All rights reserved.
+            &copy; 2025 Ali Hassan. All rights reserved.
           </p>
         </div>
       </div>
