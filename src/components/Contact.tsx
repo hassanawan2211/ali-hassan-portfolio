@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 
 const Contact: React.FC = () => {
@@ -22,39 +21,43 @@ const Contact: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError("");
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setError("");
 
-    const {
-      VITE_EMAILJS_SERVICE_ID,
-      VITE_EMAILJS_TEMPLATE_ID,
-      VITE_EMAILJS_PUBLIC_KEY,
-    } = import.meta.env;
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      }),
+    });
 
-    emailjs
-      .send(
-        VITE_EMAILJS_SERVICE_ID,
-        VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setIsSuccess(true);
-          toast.success("Message sent successfully!");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        () => {
-          toast.error("Failed to send message. Please try again.");
-          setError("Failed to send message. Please try again.");
-        }
-      )
-      .finally(() => {
-        setIsSubmitting(false);
-      });
-  };
+    const data = await res.json();
+
+    if (data.success) {
+      setIsSuccess(true);
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      throw new Error(data.message || "Failed to send");
+    }
+  } catch (err) {
+    toast.error("Failed to send message. Please try again.");
+    setError("Failed to send message. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <motion.section
@@ -70,6 +73,7 @@ const Contact: React.FC = () => {
         </h2>
 
         <div className="grid gap-8 lg:grid-cols-2">
+          {/* Contact Form */}
           <div>
             <form onSubmit={handleSubmit} className="p-6 rounded-lg shadow">
               {isSuccess && (
@@ -142,6 +146,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
 
+          {/* Contact Info */}
           <div>
             <p className="text-gray-300 mb-4 text-xl leading-7">
               Whether you have a question, a project, or just want to say hello,
@@ -178,12 +183,12 @@ const Contact: React.FC = () => {
               <li className="flex items-center space-x-3">
                 <FaGithub size={20} className="text-white text-2xl" />
                 <a
-                  href="https://github.com/AliHassan487"
+                  href="https://github.com/hassanawan2211"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-200 hover:underline"
                 >
-                  github.com/AliHassan487
+                  github.com/hassanawan2211
                 </a>
               </li>
             </ul>
