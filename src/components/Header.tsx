@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         {/* Logo */}
         <div className="text-2xl font-bold text-lightWhite italic">
           <a className="tracking-wider" href="#home">
-            MyPortfolio
+            Ali Hassan
           </a>
         </div>
 

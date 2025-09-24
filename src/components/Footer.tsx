@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           <div className="col-span-12 md:col-span-5">
             <div className="text-2xl font-bold text-lightWhite italic">
               <a className="tracking-wider" href="#home">
-                MyPortfolio
+                Ali Hassan
               </a>
             </div>
             <p className="mt-4 text-gray-400 text-md">
