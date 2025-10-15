@@ -1,12 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import AllIcons from "./AllIcons";
-import p1 from "../assets/project1.jpg";
-import p2 from "../assets/project2.jpg";
-import p3 from "../assets/project3.jpg";
-// import p4 from "../assets/project4.jpg";
-import p5 from "../assets/project5.jpg";
-import p6 from "../assets/project6.jpg";
+import itng from "../assets/ltng-ventures.png";
+import eden from "../assets/eden-pm.png";
+import macromapper from "../assets/macromapper-co-get-started.png";
+import ami from "../assets/africanmana.png";
+import greenbox from "../assets/greenboxstorage.png";
 
 type Project = {
   title: string;
@@ -18,60 +17,44 @@ type Project = {
 
 const projectsData: Project[] = [
   {
-    title: "SpareParts - Automotive Parts E-commerce Platform",
+    title: "Lightning Ventures - Bitcoin-Focused Venture Capital Platform",
     description:
-      "A robust e-commerce platform designed for the online purchase of automotive parts. Built with React and Node.js, the platform offers a user-friendly product catalog, secure checkout process, and integrated payment gateway for a seamless shopping experience.",
-    tools: ["React", "Node.js", "MongoDB", "Stripe API"],
-    link: "https://github.com/username/e-commerce-web-app",
-    imageUrl: p1,
+      "A modern and responsive website built for Lightning Ventures, a Bitcoin-focused venture capital firm and its new equity crowdfunding platform, Thunder Funder.",
+    tools: ["React.js", "Inertia.js", "Tailwind CSS", "TypeScript"],
+    link: "https://ltng.ventures/",
+    imageUrl: itng,
   },
   {
-    title: "Repairer - Home Services Platform",
+    title: "Eden.pm - Productivity and Focus Platform",
     description:
-      "Repairer offers top-quality home services, connecting users with skilled professionals for various repair needs. Built with React, TypeScript, and Tailwind CSS, the platform features a modern and responsive design for an optimal user experience.",
-    tools: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
-    link: "https://github.com/username/portfolio-website",
-    imageUrl: p2,
+      "Eden.pm is a productivity web platform offering ambient video backgrounds, focus music, task planning, and note-taking tools.",
+    tools: ["Next.js", "Tailwind CSS", "TypeScript", "AWS Lambda", "Vercel", "Stripe API"],
+    link: "https://eden.pm/",
+    imageUrl: eden,
   },
   {
-    title: "SanitizeX - Residential & Commercial Sanitizing Services",
+    title: "MacroMapper - Restaurant Nutrition & Menu Platform",
     description:
-      "SanitizeX offers professional sanitizing services for both residential and commercial spaces. Built with React, Node.js, and WebSocket for real-time updates, the platform connects users with trusted sanitizing experts.",
-    tools: ["React", "Node.js", "Firebase", "TypeScript"],
-    link: "https://github.com/username/chat-application",
-    imageUrl: p3,
+      "MacroMapper is Australia’s leading nutrition-focused restaurant platform that helps diners discover meals based on calories, macros, and dietary preferences.",
+    tools: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    link: "https://get.macromapper.co/get-started",
+    imageUrl: macromapper,
   },
-  // {
-  //   title: "Chat Application",
-  //   description:
-  //     "A real-time chat application with features like private messages, group chats, and notifications. Built with React, Node.js, and WebSocket for real-time communication.",
-  //   tools: ["React", "Node.js", "WebSocket"],
-  //   link: "https://github.com/username/chat-application",
-  //   imageUrl: p4,
-  // },
   {
-    title: "TechGear - Online Computing & Gaming Tech Store",
+    title: "African Management Institute (AMI) - Learning Module",
     description:
-      "TechGear is an e-commerce platform for purchasing the latest computing and gaming tech products. Built with React, Node.js, and WebSocket, it offers a seamless online shopping experience with real-time updates and secure transactions.",
-    tools: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "TypeScript",
-      "Stripe API",
-      "Tailwind CSS",
-    ],
-    link: "https://github.com/username/chat-application",
-    imageUrl: p5,
+      "Contributed to the AMI platform by developing the Learning Module section, converting detailed Figma designs into responsive layouts using pure HTML, CSS, and JavaScript.",
+    tools: ["HTML", "CSS", "JavaScript"],
+    link: "https://www.africanmanagers.com/learn",
+    imageUrl: ami,
   },
-
   {
-    title: "Sydney Advisors - Expert Consulting Services",
+    title: "GreenBox Storage – USA University Pickup & Drop-off System",
     description:
-      "Sydney Advisors provides expert consulting services across various industries, offering tailored solutions to businesses and individuals. The platform connects users with professional advisors for personalized guidance, leveraging modern web technologies for a smooth and intuitive experience.",
-    tools: ["React", "Node.js", "WebSocket"],
-    link: "https://github.com/username/chat-application",
-    imageUrl: p6,
+      "A logistics platform for U.S. university students to book storage with scheduled pickups and drop-offs. Built with a dual-side system (Admin Dashboard & User Web App), featuring Stripe payments, warehouse tracking, call system integration, and a role-based CRM for admins and support teams.",
+    tools: ["React", "Node.js", "WebSocket", 'Tailwind CSS'],
+    link: "https://www.greenboxstorage.org/",
+    imageUrl: greenbox,
   },
 ];
 
@@ -90,29 +73,44 @@ const Projects: React.FC = () => {
       <h3 className="text-xl md:text-2xl font-bold text-lightWhite mb-8 text-center tracking-wider">
         Deliverables and Success Metrics
       </h3>
+
       <div className="grid grid-cols-12 gap-7">
-        {projectsData.map((values, index) => (
+        {projectsData.map((project, index) => (
           <div className="main-box col-span-12 md:col-span-6" key={index}>
             <div className="card7">
-              <div className="profile-pic">
-                <img src={values.imageUrl} alt="project image" />
+              <div
+                className="profile-pic cursor-pointer"
+                onClick={() => window.open(project.link, "_blank")}
+              >
+                <img src={project.imageUrl} alt={project.title} />
               </div>
+
               <div className="bottom">
                 <div className="content">
-                  <span className="name">{values.title}</span>
-                  <span className="about-me">{values.description}</span>
-                  <span className="about-me">{values.tools}</span>
+                  <span className="name">{project.title}</span>
+                  <span className="about-me">{project.description}</span>
+                  <span className="about-me text-sm text-gray-300">
+                    {project.tools.join(" • ")}
+                  </span>
                 </div>
+
                 <div className="bottom-bottom">
-                  <div className="social-links-container">
+                  <div
+                    className="social-links-container cursor-pointer"
+                    onClick={() =>
+                      window.open("https://github.com/hassanawan2211", "_blank")
+                    }
+                  >
                     <AllIcons name="git" />
                   </div>
-                  <button className="button">
-                    <a href="https:google.com">
-                      <span>
-                        <AllIcons name="verticalArrow" />
-                      </span>
-                    </a>
+
+                  <button
+                    className="button"
+                    onClick={() => window.open(project.link, "_blank")}
+                  >
+                    <span>
+                      <AllIcons name="verticalArrow" />
+                    </span>
                   </button>
                 </div>
               </div>
@@ -125,5 +123,3 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
-
-// npm i react-tsparticles tsparticles tsparticles-slim
